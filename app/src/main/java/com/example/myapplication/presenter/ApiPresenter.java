@@ -1,31 +1,25 @@
 package com.example.myapplication.presenter;
 
-import android.content.Context;
-import android.util.Log;
-
-import androidx.room.Room;
-
 import java.util.ArrayList;
 
-import com.example.myapplication.DataBase.MyAppDatabase;
-import com.example.myapplication.MoviesModel.Moviedata;
-import com.example.myapplication.MoviesModel.ResultsMovies;
+import com.example.myapplication.model.MovieDetails;
+import com.example.myapplication.model.Moviedata;
+import com.example.myapplication.model.ResultsMovies;
 import com.example.myapplication.Api.clients.ApiService;
 import com.example.myapplication.helper.ApiMovieHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.ContentValues.TAG;
+public class ApiPresenter {
 
-public class MoviePresenter {
-
-    private ApiMovieHelper ApiMovieHelper;
     private ApiService apiService = ApiService.GetInstance();
 
+    private ApiMovieHelper apiMovieHelper;
 
-    public MoviePresenter(ApiMovieHelper view) {
-        this.ApiMovieHelper = view;
+
+    public ApiPresenter(ApiMovieHelper view) {
+        this.apiMovieHelper = view;
     }
 
     public void getMovies(String category,int page) {
@@ -43,7 +37,7 @@ public class MoviePresenter {
 
                             movieslist.add(m);
                         }
-                        ApiMovieHelper.SetMoviesData(movieslist);
+                        apiMovieHelper.setMoviesData(movieslist);
 
                     }
 
@@ -59,14 +53,30 @@ public class MoviePresenter {
                     }
                 });
     }
-    public void getFavouriteMovies(Context context){
+    public  void getMovieDetails(int id){
 
-        MyAppDatabase myAppDatabase;
-        myAppDatabase= Room.databaseBuilder(context,MyAppDatabase.class,"Moviedb").allowMainThreadQueries().build();
-        ApiMovieHelper.SetMoviesData(new ArrayList<Moviedata>(myAppDatabase.myDoa().getMovies()));
+
+        ApiService
+                .getAPI()
+                .getMovieDetails(id,ApiService.key,ApiService.LANGUAGE)
+                .enqueue(new Callback<MovieDetails>() {
+                    @Override
+                    public void onResponse(Call<MovieDetails> call, Response<MovieDetails> response) {
+                        MovieDetails data = response.body();
+                        apiMovieHelper.setMovieDetailsData(data);
+                    }
+
+                    @Override
+                    public void onFailure(Call<MovieDetails> call, Throwable t) {
+
+                    }
+                });
+
+
 
 
     }
+
 
 
 }

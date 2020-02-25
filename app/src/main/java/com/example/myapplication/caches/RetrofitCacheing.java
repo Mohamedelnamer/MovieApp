@@ -1,7 +1,7 @@
 package com.example.myapplication.caches;
 
 import android.util.Log;
-import com.example.myapplication.View.MyApplication;
+import com.example.myapplication.views.MyApplication;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

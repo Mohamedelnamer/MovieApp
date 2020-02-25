@@ -1,7 +1,6 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,31 +9,30 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.View.DetailsActivity;
+import com.example.myapplication.utills.AppConstants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import com.example.myapplication.MoviesModel.Moviedata;
+import com.example.myapplication.model.Moviedata;
 
 public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleViewAdapter.ViewHolder> {
 
 
     private Context context;
-    //todo
-    private List<Moviedata>Movies;
-    public RecycleViewClickInterface recycleViewClickInterface;
+
+    private List<Moviedata>moviesList;
+    public MovieItemClickListener movieItemClickListener;
 
 
 
-    public HomeRecycleViewAdapter(Context context, List<Moviedata> movies,RecycleViewClickInterface recycleViewClickInterface) {
+    public HomeRecycleViewAdapter(Context context, List<Moviedata> movies, MovieItemClickListener movieItemClickListener) {
         this.context = context;
-        Movies = movies;
-        this.recycleViewClickInterface=recycleViewClickInterface;
+        moviesList = movies;
+        this.movieItemClickListener = movieItemClickListener;
     }
 
     @NonNull
@@ -48,24 +46,19 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.filmtitle.setText(Movies.get(position).getTitle());
-        //todo
-        //appcont
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+Movies.get(position).getPoster_path()).into(holder.filmposter);
-
+        holder.setItemData(position);
     }
 
     @Override
     public int getItemCount() {
-        return Movies.size();
+        return moviesList.size();
     }
 
      class ViewHolder extends RecyclerView .ViewHolder{
 
-        //todo
+
         public TextView filmtitle;
         public ImageView filmposter;
-
         CardView cardView;
 
 
@@ -77,12 +70,15 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    recycleViewClickInterface.onItemClick(getAdapterPosition(),filmposter);
+                    movieItemClickListener.onItemClick(getAdapterPosition(),filmposter);
                 }
             });
-//todo
 
         }
+         public void setItemData( int position){
+             filmtitle.setText(moviesList.get(position).getTitle());
+             Picasso.get().load(AppConstants.imageUrl+moviesList.get(position).getPoster_path()).into(filmposter);
+         }
     }
 
 

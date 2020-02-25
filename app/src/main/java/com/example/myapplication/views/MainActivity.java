@@ -1,4 +1,4 @@
-package com.example.myapplication.View;
+package com.example.myapplication.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -6,18 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.myapplication.DataBase.MyAppDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.adapter.RecycleViewClickInterface;
 import com.google.android.material.navigation.NavigationView;
-
-import com.example.myapplication.View.MoviesFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;

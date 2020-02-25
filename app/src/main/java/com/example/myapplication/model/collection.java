@@ -1,4 +1,4 @@
-package com.example.myapplication.MoviesModel;
+package com.example.myapplication.model;
 
 public class collection {
     private Integer id;

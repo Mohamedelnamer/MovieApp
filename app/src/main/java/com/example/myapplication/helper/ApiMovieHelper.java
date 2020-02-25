@@ -2,9 +2,11 @@ package com.example.myapplication.helper;
 
 import java.util.ArrayList;
 
-import com.example.myapplication.MoviesModel.Moviedata;
+import com.example.myapplication.model.MovieDetails;
+import com.example.myapplication.model.Moviedata;
 
 public interface ApiMovieHelper {
 
-    void SetMoviesData(ArrayList<Moviedata> Movies);
+    void setMoviesData(ArrayList<Moviedata> Movies);
+    void setMovieDetailsData(MovieDetails movieDetails);
 }

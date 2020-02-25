@@ -1,4 +1,4 @@
-package com.example.myapplication.DataBase;
+package com.example.myapplication.database;
 
 
 
@@ -7,7 +7,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.myapplication.MoviesModel.Moviedata;
+import com.example.myapplication.model.Moviedata;
 
 import java.util.List;
 

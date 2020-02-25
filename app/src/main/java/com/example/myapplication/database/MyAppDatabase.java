@@ -1,9 +1,9 @@
-package com.example.myapplication.DataBase;
+package com.example.myapplication.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.example.myapplication.MoviesModel.Moviedata;
+import com.example.myapplication.model.Moviedata;
 
 @Database(entities = {Moviedata.class},version = 1, exportSchema = false)
 

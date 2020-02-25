@@ -1,7 +1,7 @@
 package com.example.myapplication.Api.clients;
 
-import com.example.myapplication.MoviesModel.MovieDetails;
-import com.example.myapplication.MoviesModel.ResultsMovies;
+import com.example.myapplication.model.MovieDetails;
+import com.example.myapplication.model.ResultsMovies;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
