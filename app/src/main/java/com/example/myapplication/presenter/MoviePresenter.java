@@ -21,6 +21,7 @@ import static android.content.ContentValues.TAG;
 public class MoviePresenter {
 
     private ApiMovieHelper ApiMovieHelper;
+    int x;
     private ApiService apiService = ApiService.GetInstance();
 
 

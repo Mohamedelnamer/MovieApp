@@ -25,6 +25,7 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
 
 
     private Context context;
+    //todo
     private List<Moviedata>Movies;
     public RecycleViewClickInterface recycleViewClickInterface;
 
@@ -48,6 +49,8 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.filmtitle.setText(Movies.get(position).getTitle());
+        //todo
+        //appcont
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+Movies.get(position).getPoster_path()).into(holder.filmposter);
 
     }
@@ -59,6 +62,7 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
 
      class ViewHolder extends RecyclerView .ViewHolder{
 
+        //todo
         public TextView filmtitle;
         public ImageView filmposter;
 
@@ -67,16 +71,16 @@ public class HomeRecycleViewAdapter extends RecyclerView.Adapter<HomeRecycleView
 
     public ViewHolder(View itemView) {
             super(itemView);
-            filmtitle=(TextView)itemView.findViewById(R.id.filmtitle);
-            filmposter=(ImageView)itemView.findViewById(R.id.filmposter);
-            cardView=(CardView)itemView.findViewById(R.id.filmcardid);
+            filmtitle=itemView.findViewById(R.id.filmtitle);
+            filmposter=itemView.findViewById(R.id.filmposter);
+            cardView=itemView.findViewById(R.id.filmcardid);
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     recycleViewClickInterface.onItemClick(getAdapterPosition(),filmposter);
                 }
             });
-
+//todo
 
         }
     }

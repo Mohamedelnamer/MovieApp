@@ -36,6 +36,7 @@ public class DetailsActivity extends AppCompatActivity implements ApiMovieDetail
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        //todo
         MovieTitle=(TextView)findViewById(R.id.movie_title);
         MovieCategoty=(TextView)findViewById(R.id.movie_categories);
         MovieStatue=(TextView)findViewById(R.id.movie_status);
@@ -58,7 +59,7 @@ public class DetailsActivity extends AppCompatActivity implements ApiMovieDetail
             @Override
             public void onClick(View v) {
                 myAppDatabase.myDoa().addMovie(moviedata);
-                Fav_Btn.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                Fav_Btn.setImageResource(R.drawable.ic_favorite);
                 Toast.makeText(getApplicationContext(),"Add To Your Favourite ",Toast.LENGTH_LONG).show();
 
 
@@ -74,7 +75,7 @@ public class DetailsActivity extends AppCompatActivity implements ApiMovieDetail
 
     }
 
-
+//todo
     @Override
     public void SetMovieDetailsData(MovieDetails Movie_Details) {
 
@@ -89,8 +90,6 @@ public class DetailsActivity extends AppCompatActivity implements ApiMovieDetail
             MovieCategoty.setText(MovieCategoty.getText()+","+Movie_Details.getGenres().get(i).getName());}
             else{
                 MovieCategoty.setText(Movie_Details.getGenres().get(i).getName());}
-
-
 
         }
 
